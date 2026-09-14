@@ -1,2 +1,2 @@
 # Sistema-de-Gesti-n-de-Cursos-SGC-
-Sistema de gestión de cursos, con el fin de ser utilizado en una institución que requiera tener control de todos los aspectos y visualización de los mismo
+Aplicación para la gestión y administración de cursos académicos, desarrollada con una arquitectura organizada y conectada a una base de datos para gestionar eficientemente la información de cursos, estudiantes y docentes.
