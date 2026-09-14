@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Mis Calificaciones{% endblock %}
+{% block content %}
+<h2 class="mb-4">Mis calificaciones por curso</h2>
+<table class="table table-striped align-middle">
+    <thead>
+        <tr><th>Curso</th><th>Docente</th><th>Nota</th><th>Fecha</th></tr>
+    </thead>
+    <tbody>
+        {% for cal in calificaciones %}
+        <tr>
+            <td>{{ cal.curso.nombre }}</td>
+            <td>{{ cal.curso.docente.nombre }}</td>
+            <td>{{ cal.nota }}</td>
+            <td>{{ cal.fecha.strftime('%Y-%m-%d') }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" class="text-center">Aun no tienes calificaciones registradas</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

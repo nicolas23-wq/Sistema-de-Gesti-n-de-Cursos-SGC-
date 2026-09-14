@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Dashboard Admin{% endblock %}
+{% block content %}
+<h2 class="mb-4">Dashboard de Administracion</h2>
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="card text-white" style="background-color: var(--accent-color);">
+            <div class="card-body">
+                <h5 class="card-title">Cursos</h5>
+                <p class="fs-3 mb-0">{{ total_cursos }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white" style="background-color: var(--accent-color);">
+            <div class="card-body">
+                <h5 class="card-title">Docentes</h5>
+                <p class="fs-3 mb-0">{{ total_docentes }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white" style="background-color: var(--accent-color);">
+            <div class="card-body">
+                <h5 class="card-title">Estudiantes</h5>
+                <p class="fs-3 mb-0">{{ total_estudiantes }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex gap-2 mb-4">
+    <a class="btn text-white" style="background-color: var(--accent-color);" href="{{ url_for('admin.usuarios') }}">Gestionar usuarios</a>
+    <a class="btn text-white" style="background-color: var(--accent-color);" href="{{ url_for('admin.crear_curso') }}">Crear curso</a>
+    <a class="btn text-white" style="background-color: var(--accent-color);" href="{{ url_for('admin.inscribir') }}">Inscribir estudiante</a>
+</div>
+
+<h4>Ultimos cursos</h4>
+<table class="table table-striped">
+    <thead>
+        <tr><th>#</th><th>Nombre</th><th>Descripcion</th><th>Docente</th></tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+        <tr>
+            <td>{{ curso.id }}</td>
+            <td>{{ curso.nombre }}</td>
+            <td>{{ curso.descripcion }}</td>
+            <td>{{ curso.docente.nombre }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" class="text-center">Sin cursos registrados</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

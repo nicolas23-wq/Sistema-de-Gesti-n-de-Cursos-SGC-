@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Dashboard Estudiante{% endblock %}
+{% block content %}
+<h2 class="mb-4">Bienvenido, Estudiante</h2>
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="card text-white" style="background-color: var(--accent-color);">
+            <div class="card-body">
+                <h5 class="card-title">Cursos inscritos</h5>
+                <p class="fs-3 mb-0">{{ cursos|length }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white" style="background-color: var(--accent-color);">
+            <div class="card-body">
+                <h5 class="card-title">Promedio general</h5>
+                <p class="fs-3 mb-0">{{ promedio }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4>Mis calificaciones</h4>
+<table class="table table-striped">
+    <thead>
+        <tr><th>Curso</th><th>Nota</th><th>Fecha</th></tr>
+    </thead>
+    <tbody>
+        {% for cal in calificaciones %}
+        <tr>
+            <td>{{ cal.curso.nombre }}</td>
+            <td>{{ cal.nota }}</td>
+            <td>{{ cal.fecha.strftime('%Y-%m-%d') }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="3" class="text-center">Aun no tienes calificaciones</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

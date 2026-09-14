@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Acceso denegado{% endblock %}
+{% block content %}
+<div class="text-center py-5">
+    <h1 class="display-1 fw-bold" style="color: var(--accent-color, #0d6efd);">403</h1>
+    <h3>Acceso denegado</h3>
+    <p class="text-muted">No tienes permisos para ver esta pagina.</p>
+    <a class="btn text-white" style="background-color: var(--accent-color, #0d6efd);" href="{{ url_for('auth.login') }}">Volver al inicio</a>
+</div>
+{% endblock %}

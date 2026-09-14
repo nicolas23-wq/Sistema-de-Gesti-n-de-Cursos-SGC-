@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Mis Cursos{% endblock %}
+{% block content %}
+<h2 class="mb-4">Mis cursos</h2>
+<table class="table table-striped align-middle">
+    <thead>
+        <tr><th>#</th><th>Nombre</th><th>Descripcion</th><th>Estudiantes</th></tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+        <tr>
+            <td>{{ curso.id }}</td>
+            <td>{{ curso.nombre }}</td>
+            <td>{{ curso.descripcion }}</td>
+            <td>
+                <ul class="mb-0">
+                    {% for estudiante in curso.estudiantes %}
+                    <li>{{ estudiante.nombre }}</li>
+                    {% else %}
+                    <li class="text-muted">Sin estudiantes inscritos</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" class="text-center">No tienes cursos asignados</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

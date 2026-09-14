@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Crear Curso{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <h2 class="mb-4">Crear curso</h2>
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.nombre.label(class="form-label") }}
+                {{ form.nombre(class="form-control") }}
+                {% for error in form.nombre.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+            <div class="mb-3">
+                {{ form.descripcion.label(class="form-label") }}
+                {{ form.descripcion(class="form-control", rows="3") }}
+            </div>
+            <div class="mb-3">
+                {{ form.docente_id.label(class="form-label") }}
+                {{ form.docente_id(class="form-select") }}
+                {% for error in form.docente_id.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+            <button type="submit" class="btn text-white" style="background-color: var(--accent-color);">
+                {{ form.submit.label.text }}
+            </button>
+            <a class="btn btn-outline-secondary" href="{{ url_for('admin.cursos') }}">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

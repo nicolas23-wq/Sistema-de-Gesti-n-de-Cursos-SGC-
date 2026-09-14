@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Listado de Cursos{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0">Cursos</h2>
+    <a class="btn text-white" style="background-color: var(--accent-color);" href="{{ url_for('admin.crear_curso') }}">+ Crear curso</a>
+</div>
+<table class="table table-striped align-middle">
+    <thead>
+        <tr><th>#</th><th>Nombre</th><th>Descripcion</th><th>Docente</th><th>Estudiantes</th></tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+        <tr>
+            <td>{{ curso.id }}</td>
+            <td>{{ curso.nombre }}</td>
+            <td>{{ curso.descripcion }}</td>
+            <td>{{ curso.docente.nombre }}</td>
+            <td>{{ curso.inscripciones|length }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" class="text-center">No hay cursos registrados</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
